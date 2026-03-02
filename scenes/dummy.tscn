@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b81p1ifi14i26"]
+
+[ext_resource type="Texture2D" uid="uid://ddbceuc2yg2wt" path="res://png/dummy-Photoroom.png" id="1_gtj52"]
+
+[node name="dummy" type="Node2D" unique_id=50340612]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1940806759]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=570681923]
+texture = ExtResource("1_gtj52")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=247464338]
+polygon = PackedVector2Array(-88, -77, -52, 48, -53, 76, -75, 130, -71, 174, 0, 180, 71, 173, 75, 127, 52, 74, 53, 48, 85, -79, 25, -98, 22, -139, 10, -143, 9, -182, -10, -182, -9, -142, -23, -139, -25, -99)

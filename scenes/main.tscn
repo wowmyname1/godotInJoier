@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cefxbnvyqrug4"]
+
+[ext_resource type="PackedScene" uid="uid://b7ppsdt7g3w4x" path="res://scenes/PlayersCharacterBody.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b81p1ifi14i26" path="res://scenes/dummy.tscn" id="2_h2yge"]
+
+[node name="main_scene" type="Node2D" unique_id=353891120]
+
+[node name="player" parent="." unique_id=1462168243 instance=ExtResource("1_0xm2m")]
+position = Vector2(-117, 193)
+
+[node name="dummy" parent="." unique_id=50340612 instance=ExtResource("2_h2yge")]
+position = Vector2(227, -40)
+
+[node name="dummy2" parent="." unique_id=237335030 instance=ExtResource("2_h2yge")]
+position = Vector2(227, 445)
+
+[node name="dummy3" parent="." unique_id=540693293 instance=ExtResource("2_h2yge")]
+position = Vector2(514, 187)

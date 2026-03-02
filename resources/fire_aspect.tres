@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SpellTimingData" format=3 uid="uid://c7yia4bh1ocwo"]
+
+[ext_resource type="Script" uid="uid://dgphl1xmofute" path="res://scripts/data/aspect_data.gd" id="1_hnbjs"]
+
+[resource]
+script = ExtResource("1_hnbjs")
+metadata/_custom_type_script = "uid://dgphl1xmofute"

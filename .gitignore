@@ -1,0 +1,22 @@
+# Godot 4.x игнор-файл
+
+# Папки кэша
+.godot/
+.vscode/
+.idea/
+
+# Временные файлы
+*.import
+*.tmp
+*.cache
+
+# Логи
+*.log
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Сборки (если будете экспортировать)
+export/
+builds/

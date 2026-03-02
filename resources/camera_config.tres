@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CameraConfig" format=3 uid="uid://bf6mso6gkpd5j"]
+
+[ext_resource type="Script" uid="uid://bhf11bi2v17eu" path="res://scripts/config/camera_config.gd" id="1_hsfqh"]
+
+[resource]
+script = ExtResource("1_hsfqh")
+metadata/_custom_type_script = "uid://bhf11bi2v17eu"
