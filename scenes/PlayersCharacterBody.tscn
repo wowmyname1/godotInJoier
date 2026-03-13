@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3416skbarkki" path="res://png/HandL.png" id="6_l8adw"]
 [ext_resource type="Texture2D" uid="uid://bomtpu6guaak0" path="res://png/HandR.png" id="7_mfyxb"]
 [ext_resource type="Script" uid="uid://d4ct88xyqsfe3" path="res://scripts/aspect_manager.gd" id="8_i5u3r"]
+[ext_resource type="Resource" uid="uid://c7yia4bh1ocwo" path="res://resources/fire_aspect.tres" id="9_f6ed3"]
 
 [sub_resource type="Resource" id="Resource_ftm5i"]
 script = ExtResource("2_xt336")
@@ -63,6 +64,7 @@ texture = ExtResource("7_mfyxb")
 
 [node name="AspectManager" type="Node" parent="CharacterBody2D" unique_id=1137970478 node_paths=PackedStringArray("debug_label")]
 script = ExtResource("8_i5u3r")
+aspect_data = ExtResource("9_f6ed3")
 debug_label = NodePath("StateLabel")
 metadata/_custom_type_script = "uid://d4ct88xyqsfe3"
 

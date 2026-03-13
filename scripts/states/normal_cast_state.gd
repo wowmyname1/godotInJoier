@@ -16,4 +16,4 @@ func _on_update(delta: float) -> void:
 
 func _on_damage(amount: int) -> void:
 	if aspect_data != null and aspect_data.interrupted_by_damage:
-		state_finished.emit("MissCasting")
+		state_finished.emit("MissCast")

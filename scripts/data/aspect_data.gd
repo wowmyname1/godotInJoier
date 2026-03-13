@@ -1,35 +1,42 @@
 class_name AspectData
 extends Resource
 ## Хранит параметры Аспекта (тайминги, правила, условия перехода).
+## Этот ресурс настраивается в инспекторе Godot без изменения кода.
 
-@export_group("Preparation Cycle")
+@export_group("🔄 Preparation Cycle")
 @export var idle_duration: float = 1.0
 @export var invocation_duration: float = 0.4
+@export var max_hold_cycles: int = 3  # ← НОВОЕ: лимит удержания в Invocation
 @export var channeling_duration: float = 0.5
 @export var after_cast_duration: float = 0.3
 
-@export_group("Charging Windows")
+@export_group("⚡ Charging Windows")
 @export var perfect_window_center: float = 0.5
 @export var perfect_window_tolerance: float = 0.05
 @export var max_charge_duration: float = 1.0
 
-@export_group("Cast Tiers")
+@export_group("🎯 Cast Tiers")
 @export var low_cast_duration: float = 0.3
 @export var natural_cast_duration: float = 0.5
 @export var perfect_cast_duration: float = 0.7
 @export var miss_cast_duration: float = 0.8
 
-@export_group("Damage Rules")
+@export_group("⚔️ Damage Rules")
 @export var interrupted_by_damage: bool = true
 @export var stagger_resistance: int = 1
 @export var reset_combo_on_damage: bool = true
 
-@export_group("Combo & OverCast")
+@export_group("🔥 Combo & OverCast")
 @export var combo_required_for_over_cast: int = 3
 @export var over_cast_self_damage: int = 10
 @export var over_cast_knockback_force: float = 500.0
 
-@export_group("Aspect Info")
+@export_group("🔮 Aspect Info")
 @export var aspect_name: String = "Fire Aspect: Spark"
 @export var discipline: String = "Fire Discipline"
-@export var transition_conditions: Array = []
+@export var transition_conditions: Array = []  # ← Тип будет TransitionCondition[]
+@export var next_aspect: AspectData = null  # ← НОВОЕ: ссылка на следующий Аспект
+
+@export_group("⚡ Failure & Recovery")
+@export var invocation_failed_duration: float = 0.8  # ← НОВОЕ: длительность штрафа
+@export var miss_cast_return_to_channeling: bool = true  # ← НОВОЕ: куда идти после MissCast
