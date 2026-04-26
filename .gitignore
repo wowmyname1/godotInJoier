@@ -1,1 +1,33 @@
-Nothing should be ignored since only a source code file (.gd) was modified and no build artifacts, dependencies, or temporary files were detected in the changes.
+# Godot 4+ specific
+.godot/
+.nomedia
+
+# Godot-specific
+.import/
+export.cfg
+export_credentials.cfg
+*.translation
+
+# Mono / C#
+.mono/
+data_*/
+mono_crash.*.json
+
+# OS: macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# OS: Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# OS: Linux
+*~
+.nfs*
