@@ -1,13 +1,27 @@
 [gd_scene format=3 uid="uid://b81p1ifi14i26"]
 
+[ext_resource type="Script" uid="uid://c83yp7gxg22lj" path="res://scenes/dummy.gd" id="1_6m2ry"]
 [ext_resource type="Texture2D" uid="uid://ddbceuc2yg2wt" path="res://png/dummy-Photoroom.png" id="1_gtj52"]
+[ext_resource type="Script" uid="uid://daqdi02axjrr8" path="res://scripts/hp_manager/health_component.gd" id="3_w4gkx"]
+[ext_resource type="Script" uid="uid://b1v3txpiicyhq" path="res://scenes/health_bar.gd" id="4_w4gkx"]
 
 [node name="dummy" type="Node2D" unique_id=50340612]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1940806759]
+script = ExtResource("1_6m2ry")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=570681923]
 texture = ExtResource("1_gtj52")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=247464338]
 polygon = PackedVector2Array(-88, -77, -52, 48, -53, 76, -75, 130, -71, 174, 0, 180, 71, 173, 75, 127, 52, 74, 53, 48, 85, -79, 25, -98, 22, -139, 10, -143, 9, -182, -10, -182, -9, -142, -23, -139, -25, -99)
+
+[node name="HealthComponent" type="Node" parent="StaticBody2D" unique_id=379656308]
+script = ExtResource("3_w4gkx")
+metadata/_custom_type_script = "uid://daqdi02axjrr8"
+
+[node name="ProgressBar" type="ProgressBar" parent="StaticBody2D" unique_id=4999380]
+offset_top = -212.0
+offset_right = 4.0
+offset_bottom = -185.0
+script = ExtResource("4_w4gkx")

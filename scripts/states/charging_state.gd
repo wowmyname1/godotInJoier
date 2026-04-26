@@ -49,24 +49,21 @@ func _determine_cast_tier(charge_time: float) -> String:
 	print("  - max_charge_duration: ", aspect_data.max_charge_duration)
 	
 	# Перезаряд (слишком долго)
-	if charge_time > aspect_data.max_charge_duration:
-		print("  → OverCast (too long)")
-		return "OverCast"
-	
-	# Идеальное окно
-	elif charge_time >= window_min and charge_time <= window_max:
-		print("  → PerfectCast (in window!)")
-		return "PerfectCast"
-	
-	# Ранний релиз
-	elif charge_time < aspect_data.perfect_window_center:
+	# Слишком рано (меньше нормы)
+	if charge_time < window_min:
 		print("  → LowCast (too early)")
 		return "LowCast"
-	
-	# Поздний релиз (пропустил окно)
+
+# Идеальное окно (норма)
+	elif charge_time <= window_max:
+		print("  → PerfectCast (in window!)")
+		return "PerfectCast"
+
+# Слишком поздно (больше нормы)
+# Сюда попадает всё, что > window_max (включая превышение max_charge_duration)
 	else:
-		print("  → LowCast (missed window)")
-		return "LowCast"
+		print("  → OverCast (too late/long)")
+		return "OverCast"
 
 func _on_damage(amount: int) -> void:
 	if aspect_data != null and aspect_data.interrupted_by_damage:

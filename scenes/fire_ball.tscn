@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bpb28dkxd30l7"]
+
+[ext_resource type="Script" uid="uid://de4p7dpsdpmg4" path="res://scripts/projectile.gd" id="1_wkpos"]
+[ext_resource type="Texture2D" uid="uid://b0ujmkg4xjfgo" path="res://png/fireball_flee animation/tile000.png" id="2_whh6h"]
+[ext_resource type="Texture2D" uid="uid://4youlr4oufq8" path="res://png/fireball_flee animation/tile001.png" id="3_1j6tf"]
+[ext_resource type="Texture2D" uid="uid://x0o83yp21ljq" path="res://png/fireball_flee animation/tile002.png" id="4_1jib6"]
+[ext_resource type="Texture2D" uid="uid://crmws6l8es8jh" path="res://png/fireball_flee animation/tile003.png" id="5_5i8ur"]
+[ext_resource type="Texture2D" uid="uid://crwpfewk1f18j" path="res://png/fireball_flee animation/tile004.png" id="6_64gb1"]
+[ext_resource type="Texture2D" uid="uid://bcemggl6x7rv2" path="res://png/fireball_flee animation/tile005.png" id="7_m32r7"]
+[ext_resource type="Texture2D" uid="uid://bg0oju6ll8f7w" path="res://png/fireball_flee animation/tile006.png" id="8_upgr7"]
+[ext_resource type="Texture2D" uid="uid://cx15riwvnw7gj" path="res://png/fireball_flee animation/tile007.png" id="9_hy5uo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m1rs"]
+radius = 68.007355
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8q1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_whh6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1j6tf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1jib6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5i8ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_64gb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m32r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_upgr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hy5uo")
+}],
+"loop": true,
+"name": &"fireball_flee",
+"speed": 15.0
+}]
+
+[node name="fire_ball" type="Node2D" unique_id=380196880]
+
+[node name="Projectile" type="Area2D" parent="." unique_id=1516711230]
+script = ExtResource("1_wkpos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile" unique_id=476068523]
+shape = SubResource("CircleShape2D_8m1rs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Projectile" unique_id=2134604599]
+sprite_frames = SubResource("SpriteFrames_e8q1l")
+animation = &"fireball_flee"
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=923692565]
+wait_time = 2.0
+one_shot = true
+autostart = true
