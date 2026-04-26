@@ -37,7 +37,7 @@ func _determine_cast_tier(charge_time: float) -> String:
 	
 	if aspect_data == null:
 		print("[ChargingState] ⚠️ aspect_data is NULL! Returning LowCast")
-		return "LowCast"
+		return StateNames.LOW_CAST
 	
 	var window_min = aspect_data.perfect_window_center - aspect_data.perfect_window_tolerance
 	var window_max = aspect_data.perfect_window_center + aspect_data.perfect_window_tolerance
@@ -52,18 +52,18 @@ func _determine_cast_tier(charge_time: float) -> String:
 	# Слишком рано (меньше нормы)
 	if charge_time < window_min:
 		print("  → LowCast (too early)")
-		return "LowCast"
+		return StateNames.LOW_CAST
 
 # Идеальное окно (норма)
 	elif charge_time <= window_max:
 		print("  → PerfectCast (in window!)")
-		return "PerfectCast"
+		return StateNames.PERFECT_CAST
 
 # Слишком поздно (больше нормы)
 # Сюда попадает всё, что > window_max (включая превышение max_charge_duration)
 	else:
 		print("  → OverCast (too late/long)")
-		return "OverCast"
+		return StateNames.OVER_CAST
 
 func _on_damage(amount: int) -> void:
 	if aspect_data != null and aspect_data.interrupted_by_damage:

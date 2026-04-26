@@ -26,7 +26,7 @@ var transition_progress: Dictionary = {}
 func _ready() -> void:
 	_initialize_transition_conditions()
 	_initialize_states()
-	change_state("Idle")
+	change_state(StateNames.IDLE)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ИНИЦИАЛИЗАЦИЯ СОСТОЯНИЙ
@@ -35,7 +35,7 @@ func _ready() -> void:
 func _initialize_states() -> void:
 	# Создаём все состояния
 	var idle = IdleState.new()
-	idle.set_name("Idle")
+	idle.set_name(StateNames.IDLE)
 	
 	var invocation = InvocationState.new()
 	invocation.set_name("Invocation")
@@ -50,16 +50,16 @@ func _initialize_states() -> void:
 	charging.set_name("Charging")
 	
 	var low_cast = LowCastState.new()
-	low_cast.set_name("LowCast")
+	low_cast.set_name(StateNames.LOW_CAST)
 	
 	var natural_cast = NaturalCastState.new()
-	natural_cast.set_name("NaturalCast")
+	natural_cast.set_name(StateNames.NATURAL_CAST)
 	
 	var perfect_cast = PerfectCastState.new()
-	perfect_cast.set_name("PerfectCast")
+	perfect_cast.set_name(StateNames.PERFECT_CAST)
 	
 	var over_cast = OverCastState.new()  # ← НОВОЕ
-	over_cast.set_name("OverCast")
+	over_cast.set_name(StateNames.OVER_CAST)
 	
 	var after_cast = AfterCastState.new()
 	after_cast.set_name("AfterCast")
@@ -68,15 +68,15 @@ func _initialize_states() -> void:
 	miss_cast.set_name("MissCast")
 	
 	# Регистрируем в словаре
-	states["Idle"] = idle
+	states[StateNames.IDLE] = idle
 	states["Invocation"] = invocation
 	states["InvocationFailed"] = invocation_failed  # ← НОВОЕ
 	states["Channeling"] = channeling
 	states["Charging"] = charging
-	states["LowCast"] = low_cast
-	states["NaturalCast"] = natural_cast
-	states["PerfectCast"] = perfect_cast
-	states["OverCast"] = over_cast  # ← НОВОЕ
+	states[StateNames.LOW_CAST] = low_cast
+	states[StateNames.NATURAL_CAST] = natural_cast
+	states[StateNames.PERFECT_CAST] = perfect_cast
+	states[StateNames.OVER_CAST] = over_cast  # ← НОВОЕ
 	states["AfterCast"] = after_cast
 	states["MissCast"] = miss_cast  # ← НОВОЕ
 	
@@ -109,7 +109,7 @@ func _on_cast_completed(cast_tier: String) -> void:
 	## Обновляет комбо и проверяет условия перехода.
 	
 	# Обновляем комбо
-	if cast_tier == "PerfectCast":
+	if cast_tier == StateNames.PERFECT_CAST:
 		increment_combo()
 	else:
 		reset_combo()
