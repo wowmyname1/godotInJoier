@@ -17,7 +17,7 @@ func _on_update(delta: float) -> void:
 	
 	# Естественный переход в NatureCast по таймеру
 	if timer >= channeling_duration:
-		state_finished.emit("NaturalCast")
+		state_finished.emit(StateNames.NATURAL_CAST)
 		print("[ChannelingState] Timeout → NaturalCast")
 
 func _on_input(event: InputEvent) -> void:
