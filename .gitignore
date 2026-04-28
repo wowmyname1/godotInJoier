@@ -35,3 +35,5 @@ $RECYCLE.BIN/
 =======
 .nfs*
 >>>>>>> 005d2aaa0ebe6b9693ab5170a5641e913d16420f
+*.tmp
+```
