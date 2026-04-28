@@ -1,3 +1,39 @@
-```
+# Godot 4+ specific
+.godot/
+.nomedia
+
+# Godot-specific
+.import/
+export.cfg
+export_credentials.cfg
+*.translation
+
+# Mono / C#
+.mono/
+data_*/
+mono_crash.*.json
+
+# OS: macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# OS: Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# OS: Linux
+*~
+<<<<<<< HEAD
+.nfs*
+=======
+.nfs*
+>>>>>>> 005d2aaa0ebe6b9693ab5170a5641e913d16420f
 *.tmp
 ```
