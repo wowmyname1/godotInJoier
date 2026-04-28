@@ -1,16 +1,20 @@
 extends CharacterBody2D
 
+## Игрок с управлением движением и вращением.
+
 @export var config: PlayerConfig
 @export var mouse_deadzone: float = 5.0
 
 @onready var aspect_manager: Node = $AspectManager
 
+var cached_forward_dir: Vector2 = Vector2.RIGHT
+var last_rotation: float = 0.0
+
+
 func _input(event: InputEvent) -> void:
 	if aspect_manager:
 		aspect_manager._input(event)
 
-var cached_forward_dir: Vector2 = Vector2.RIGHT
-var last_rotation: float = 0.0
 
 func _physics_process(delta: float) -> void:
 	handle_rotation(delta)
@@ -27,6 +31,7 @@ func handle_rotation(delta: float) -> void:
 		last_rotation = rotation
 	else:
 		rotation = lerp_angle(rotation, last_rotation, config.rotation_speed * delta)
+
 
 func handle_movement(delta: float) -> void:
 	var input_forward = Input.get_action_strength("move_forward") - Input.get_action_strength("move_back")

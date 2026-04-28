@@ -9,7 +9,7 @@ extends Control
 
 const DEFAULT_POINT_COLOR := Color.RED
 const DEFAULT_LINE_COLOR := Color.WHITE
-const TAU := TAU  # 2 * PI
+const PI_2 := TAU  # 2 * PI для совместимости
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ЭКСПОРТИРУЕМЫЕ ПЕРЕМЕННЫЕ
@@ -105,7 +105,7 @@ func _reset_particle(particle: Particle) -> Particle:
 		randf() * rect.size.x,
 		randf() * rect.size.y
 	)
-	particle.velocity = Vector2.RIGHT.rotated(randf() * TAU) * randf_range(min_velocity, max_velocity)
+	particle.velocity = Vector2.RIGHT.rotated(randf() * PI_2) * randf_range(min_velocity, max_velocity)
 	particle.radius = randf_range(min_radius, max_radius)
 	particle.life = 0.0
 	particle.interaction_force = Vector2.ZERO
@@ -165,9 +165,13 @@ func _update_interaction_force(particle: Particle) -> void:
 
 func _draw() -> void:
 	"""Отрисовывает все частицы и соединения между ними."""
+	# Сначала рисуем все соединения (линии будут под частицами)
+	for i in range(particles.size()):
+		_draw_connections(particles[i])
+	
+	# Затем рисуем все частицы поверх линий
 	for particle in particles:
 		_draw_particle(particle)
-		_draw_connections(particle)
 
 
 func _draw_particle(particle: Particle) -> void:
@@ -183,13 +187,11 @@ func _draw_connections(particle_a: Particle) -> void:
 	var distance: float
 	var line_alpha: float
 	var line_width: float
+	var particle_a_index: int = particles.find(particle_a)
 	
 	# Проверяем только пары с индексом больше текущего (избегаем дублирования)
-	for other_particle in particles:
-		if particle_a == other_particle or particles.find(particle_a) >= particles.find(other_particle):
-			continue
-		
-		particle_b = other_particle
+	for i in range(particle_a_index + 1, particles.size()):
+		particle_b = particles[i]
 		distance = particle_a.position.distance_to(particle_b.position)
 		
 		if distance < max_line_length:

@@ -1,13 +1,16 @@
 extends Camera2D
 
+## Камера с динамическим смещением от мыши и движения игрока.
+
 @export var config: CameraConfig
 @export var dead_zone_radius: float = 100.0
 @export var player: CharacterBody2D
 
 var viewport_center: Vector2 = Vector2(960, 540)
-var viewport_size: Vector2 = Vector2(1920, 1080)  # Храним размер
+var viewport_size: Vector2 = Vector2(1920, 1080)
 var max_viewport_distance: float = 1.0
 var smooth_movement_offset: Vector2 = Vector2.ZERO
+
 
 func _ready() -> void:
 	_update_viewport_cache()
@@ -24,6 +27,7 @@ func _ready() -> void:
 	
 	get_viewport().size_changed.connect(_update_viewport_cache)
 
+
 func _update_viewport_cache() -> void:
 	var size = get_viewport_rect().size
 	if size.x > 0 and size.y > 0:
@@ -33,8 +37,10 @@ func _update_viewport_cache() -> void:
 		if max_viewport_distance <= 0:
 			max_viewport_distance = 1.0
 
+
 func _physics_process(delta: float) -> void:
 	update_offset(delta)
+
 
 func update_offset(delta: float) -> void:
 	if config == null or player == null:
@@ -43,9 +49,7 @@ func update_offset(delta: float) -> void:
 	# === 1. ПОЛУЧЕНИЕ И ОГРАНИЧЕНИЕ МЫШИ ===
 	var mouse_pos = get_viewport().get_mouse_position()
 	
-	# ГЛАВНОЕ ИСПРАВЛЕНИЕ:
-	# Принудительно держим мышь в пределах экрана.
-	# Даже если курсор ушёл за окно, для камеры он остаётся на границе.
+	# Принудительно держим мышь в пределах экрана
 	mouse_pos = mouse_pos.clamp(Vector2.ZERO, viewport_size)
 	
 	var direction = mouse_pos - viewport_center
